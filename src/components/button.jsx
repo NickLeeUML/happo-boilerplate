@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 const Button = styled.button`
-    border: solid 3px red;
+    border: solid 3px pink;
     background-color: rgb(47, 101, 175);
     color:white; 
     padding: 18px 16px;
