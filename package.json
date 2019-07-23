@@ -7,7 +7,7 @@
     "build:dev": "webpack --config ./scripts/webpack.config.babel.js --hide-modules true --mode \"development\"",
     "watch": "yarn run build:dev --watch",
     "clean": "rimraf ./build",
-    "happo": "happo compare --link 6d1a2939d6a1fc2329c6d69a0cb87f746e63304d"
+    "happo": "happo compare --link https://github.com/NickLeeUML/happo-boilerplate/commit/6d1a2939d6a1fc2329c6d69a0cb87f746e63304d"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.41",
