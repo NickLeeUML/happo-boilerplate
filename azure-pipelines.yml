@@ -5,6 +5,8 @@
 variables: 
   APIKEY : $APIKEY
   APISECRET : $APISECRET
+  PREVIOUS_SHA : f93a49547237e3a33ea17d48f9fc4105b047db5a
+  CURRENT_SHA : $(Build.SourceVersion)	
 
 trigger:
 - master
