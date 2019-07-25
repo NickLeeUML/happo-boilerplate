@@ -8,7 +8,7 @@
     "watch": "yarn run build:dev --watch",
     "clean": "rimraf ./build",
     "happo": "happo",
-    "happo-ci-travis": "happo-ci-travis",
+    "happo-ci-travis": "",
     "happo-ci": "happo-ci"
   },
   "devDependencies": {
