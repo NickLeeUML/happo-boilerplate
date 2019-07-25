@@ -8,7 +8,6 @@ variables:
   PREVIOUS_SHA : f93a49547237e3a33ea17d48f9fc4105b047db5a
   CURRENT_SHA : $(Build.SourceVersion)	
   CHANGE_URL : https://github.com/NickLeeUML/happo-boilerplate/commit/$(Build.SourceVersion)
-  HAPPO_CONFIG_FILE : './config.js'
 
 trigger:
 - master
