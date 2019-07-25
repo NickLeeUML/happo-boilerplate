@@ -1,2 +1,2 @@
 module.exports.apiKey = process.env.APIKEY;
-module.exports.exports.apiSecret = process.env.APISECRET; 
+module.exports.apiSecret = process.env.APISECRET; 
