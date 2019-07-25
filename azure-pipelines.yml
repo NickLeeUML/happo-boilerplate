@@ -20,5 +20,5 @@ steps:
 
 - script: |
     npm install
-    npm run happo-ci-travis
+    npm run happo-ci
   displayName: 'yarn install and run happo'
