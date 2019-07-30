@@ -7,7 +7,7 @@ variables:
   APISECRET : $APISECRET
   PREVIOUS_SHA : 5cfd6e1cedf9ba5832bb598fe415c164e1256fe6
   CURRENT_SHA : $(system.pullRequest.sourceCommitId)
-  CHANGE_URL : $(System.PullRequest.SourceRepositoryURI)/pull/$(System.PullRequest.PullRequestNumber)	
+  CHANGE_URL : sed 's/...$//' <<< $(System.PullRequest.SourceRepositoryURI)
   HAPPO_CONFIG_FILE : './config.js'
 
 trigger:
