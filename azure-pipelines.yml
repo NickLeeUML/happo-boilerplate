@@ -1,0 +1,28 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+variables: 
+  APIKEY : $APIKEY
+  APISECRET : $APISECRET
+  PREVIOUS_SHA : f93a49547237e3a33ea17d48f9fc4105b047db5a
+  CURRENT_SHA : $(Build.SourceVersion)	
+  CHANGE_URL : https://github.com/NickLeeUML/happo-boilerplate/commit/$(Build.SourceVersion)
+  HAPPO_CONFIG_FILE : './config.js'
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run happo-ci
+  displayName: 'yarn install and run happo'
