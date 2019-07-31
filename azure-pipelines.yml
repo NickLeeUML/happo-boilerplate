@@ -7,7 +7,6 @@ variables:
   APISECRET : $APISECRET
   PREVIOUS_SHA : 5cfd6e1cedf9ba5832bb598fe415c164e1256fe6
   CURRENT_SHA : $(system.pullRequest.sourceCommitId)
-  CHANGE_URL : sed 's/...$//' <<< $(System.PullRequest.SourceRepositoryURI)$(System.PullRequest.PullRequestNumber	)
   HAPPO_CONFIG_FILE : './config.js'
 
 trigger:
@@ -17,8 +16,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- bash |
-    value=$(sed 's/...$//' <<< $(System.PullRequest.SourceRepositoryURI))
+- bash: |
+    value=$(sed 's/...$//' <<< $(System.PullRequest.SourceRepositoryURI)$(System.PullRequest.PullRequestNumber))
     echo "##vso[task.setvariable variable=CHANGE_URL]$value"
 
 - task: NodeTool@0
