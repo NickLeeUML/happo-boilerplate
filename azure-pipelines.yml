@@ -17,7 +17,7 @@ pool:
 
 steps:
 - bash: |
-    value=$(sed 's/.....$//' <<< $(System.PullRequest.SourceRepositoryURI))/$(System.PullRequest.PullRequestNumber)
+    value=$(sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
     echo "##vso[task.setvariable variable=CHANGE_URL]$value"
 
 - task: NodeTool@0
