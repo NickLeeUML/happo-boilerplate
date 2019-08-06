@@ -3,9 +3,7 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 variables: 
-  APIKEY : $APIKEY
-  APISECRET : $APISECRET
-  PREVIOUS_SHA : 5cfd6e1cedf9ba5832bb598fe415c164e1256fe6
+  PREVIOUS_SHA : git merge-base $(System.PullRequest.TargetBranch) $(System.PullRequest.SourceBranch)
   CURRENT_SHA : $(system.pullRequest.sourceCommitId)
   HAPPO_CONFIG_FILE : './config.js'
 
