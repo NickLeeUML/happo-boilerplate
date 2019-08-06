@@ -16,7 +16,7 @@ steps:
 - bash: |
     value=$(sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
     echo "##vso[task.setvariable variable=CHANGE_URL]$value"
-    echo "##vso[task.setvariable variable=PREVIOUS_SHA]git merge-base  refs/heads/master/$(System.PullRequest.TargetBranch) refs/heads/$(System.PullRequest.SourceBranch)"
+    echo "##vso[task.setvariable variable=PREVIOUS_SHA]git merge-base  refs/heads/$(System.PullRequest.TargetBranch) refs/heads/$(System.PullRequest.SourceBranch)"
 
 - task: NodeTool@0
   inputs:
