@@ -13,9 +13,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- bash: |
-   
-
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
@@ -28,6 +25,10 @@ steps:
     temp=$(git merge-base origin/$(System.PullRequest.TargetBranch) $(System.PullRequest.SourceBranch))
     echo "##vso[task.setvariable variable=PREVIOUS_SHA]$temp"
   displayName: 'setting git variables' 
+
+- script: |
+    echo PREVIOUS_SHA
+
 - script: |
     npm install
     npm run happo-ci
