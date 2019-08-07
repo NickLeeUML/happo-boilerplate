@@ -23,10 +23,9 @@ steps:
 
 - script: |
     git checkout azure-test
-    git merge-base origin/$(System.PullRequest.TargetBranch) origin/$(System.PullRequest.SourceBranch)
     value=$(sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
     echo "##vso[task.setvariable variable=CHANGE_URL]$value"
-    temp = $(git merge-base origin/$(System.PullRequest.TargetBranch) origin/$(System.PullRequest.SourceBranch))
+    temp=$(git merge-base origin/$(System.PullRequest.TargetBranch) origin/$(System.PullRequest.SourceBranch))
     echo "##vso[task.setvariable variable=PREVIOUS_SHA]$temp"
     npm install
     npm run happo-ci
