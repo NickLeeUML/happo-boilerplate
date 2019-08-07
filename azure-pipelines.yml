@@ -27,6 +27,8 @@ steps:
     echo "##vso[task.setvariable variable=CHANGE_URL]$value"
     temp=git merge-base origin/$(System.PullRequest.TargetBranch) origin/$(System.PullRequest.SourceBranch)
     echo "##vso[task.setvariable variable=PREVIOUS_SHA]$temp"
+  displayName: 'setting git variables' 
+- script: |
     npm install
     npm run happo-ci
   displayName: 'yarn install and run happo'
