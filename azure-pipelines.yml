@@ -14,10 +14,7 @@ pool:
 
 steps:
 - bash: |
-    git checkout branch azure-test
-    value=$(sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
-    echo "##vso[task.setvariable variable=CHANGE_URL]$value"
-    echo "##vso[task.setvariable variable=PREVIOUS_SHA]git merge-base origin/$(System.PullRequest.TargetBranch) origin/$(System.PullRequest.SourceBranch)"
+   
 
 - task: NodeTool@0
   inputs:
@@ -25,6 +22,10 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    git checkout branch azure-test
+    value=$(sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
+    echo "##vso[task.setvariable variable=CHANGE_URL]$value"
+    echo "##vso[task.setvariable variable=PREVIOUS_SHA]git merge-base origin/$(System.PullRequest.TargetBranch) origin/$(System.PullRequest.SourceBranch)"
     npm install
     npm run happo-ci
   displayName: 'yarn install and run happo'
