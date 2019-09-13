@@ -4,8 +4,6 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 variables: 
   CURRENT_SHA : $(system.pullRequest.sourceCommitId)
-  HAPPO_CONFIG_FILE : './config.js'
-
 trigger:
 - master
 
@@ -28,6 +26,8 @@ steps:
 
 - script: |
     echo PREVIOUS_SHA
+- script: | 
+    node test/puppeteer.js
 
 - script: |
     npm install
