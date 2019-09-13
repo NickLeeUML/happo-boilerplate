@@ -57,6 +57,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "dotenv": "^8.0.0",
+    "express": "^4.17.1",
     "gsap": "^1.20.4",
     "happo.io": "^3.19.0",
     "history": "^4.7.2",
@@ -66,6 +67,7 @@
     "null-loader": "^0.1.1",
     "open-color": "^1.6.2",
     "polished": "^1.9.2",
+    "puppeteer": "^1.19.0",
     "react": "16.3.0",
     "react-dom": "16.3.0",
     "react-redux": "^5.0.7",
