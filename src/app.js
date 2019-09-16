@@ -13,7 +13,7 @@ export default class App extends React.Component {
 
     changeText(){
         this.setState({
-            text:"Button Presed"
+            text:"Button Pressed"
         })
     }
 

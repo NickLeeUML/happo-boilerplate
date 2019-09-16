@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const { uploadImage } = require('./azure/blobService.js');
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -11,7 +12,11 @@ const puppeteer = require('puppeteer');
     console.log(err)
   }
   
-  //await page.pdf({path: 'hn.pdf', format: 'A4'});
+  const data = await page.screenshot({fullPage: true, encoding: 'base64'})
+  const buff = new Buffer(data, 'base64');
 
   await browser.close();
+  await uploadImage('Stackoverflow',buff)
+
+
 })();
