@@ -26,9 +26,14 @@ steps:
 
 - script: |
     echo PREVIOUS_SHA
-- script: | 
-    npm run ui-test
 - script: |
     npm install
-    npm run happo-ci
-  displayName: 'yarn install and run happo-ci'
+  displayName: 'install packages'
+
+- script: | 
+    npm run ui-test
+  displayName: 'run ui test'
+
+- script: | 
+      npm run happo-ci
+  displayName: 'run happo-ci'
