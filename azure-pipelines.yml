@@ -27,10 +27,7 @@ steps:
 - script: |
     echo PREVIOUS_SHA
 - script: | 
-    pwd
-    ls
-    node src/test/puppeteer.js
-
+    npm run ui-test
 - script: |
     npm install
     npm run happo-ci

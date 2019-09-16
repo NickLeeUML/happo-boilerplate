@@ -9,7 +9,8 @@
     "clean": "rimraf ./build",
     "happo": "happo",
     "happo-ci-travis": "",
-    "happo-ci": "happo-ci"
+    "happo-ci": "happo-ci",
+    "ui-test": "node src/test/puppeteer.js"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.41",
