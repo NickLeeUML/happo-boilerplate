@@ -17,7 +17,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    git checkout azure-test
+    git checkout puppeteer
     value=$( sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
     echo "##vso[task.setvariable variable=CHANGE_URL]$value"
     temp=$(git merge-base origin/$(System.PullRequest.TargetBranch) $(System.PullRequest.SourceBranch))
@@ -32,7 +32,7 @@ steps:
 
 - script: | 
     npm run ui-test
-  displayName: 'run ui test'
+  displayName: 'run ui-test'
 
 - script: | 
       npm run happo-ci
