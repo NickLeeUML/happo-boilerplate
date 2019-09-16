@@ -32,4 +32,4 @@ steps:
 - script: |
     npm install
     npm run happo-ci
-  displayName: 'yarn install and run happo'
+  displayName: 'yarn install and run happo-ci'
