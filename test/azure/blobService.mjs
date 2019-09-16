@@ -1,12 +1,15 @@
 
 //import '@babel/polyfill'; 
-const azure = require('azure-storage');
-const { Aborter, BlobURL, BlockBlobURL, ContainerURL, ServiceURL, SharedKeyCredential, StorageURL, uploadStreamToBlockBlob } = require('@azure/storage-blob');
-const sizeOf = require('image-size')
-const md5 = require('md5')
-const dotenv = require('dotenv').config()
-const fs = require('fs');
-const path = require('path');
+
+import azure from 'azure-storage';
+import storageBlob from '@azure/storage-blob'
+const { Aborter, BlobURL, BlockBlobURL, ContainerURL, ServiceURL, SharedKeyCredential, StorageURL, uploadStreamToBlockBlob } = storageBlob
+import sizeOf from 'image-size'
+import md5 from 'md5'
+import dotenv from 'dotenv'
+dotenv.config()
+import fs from 'fs';
+import path from 'path';
 
 const AZURE_STORAGE_ACCOUNT = process.env.AZURE_STORAGE_ACCOUNT;
 const AZURE_STORAGE_ACCESS_KEY = process.env.AZURE_STORAGE_ACCESS_KEY;
@@ -48,5 +51,5 @@ async function checkIfUnique(buffer) {
 module.exports = {
     checkIfUnique:checkIfUnique,
     uploadImage:uploadImage,
-
+    getBlobUrl:getBlobUrl
 }

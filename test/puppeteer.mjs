@@ -1,5 +1,6 @@
-const puppeteer = require('puppeteer');
-const { uploadImage } = require('./azure/blobService.js');
+import puppeteer from 'puppeteer'
+import blobService from './azure/blobService.js'
+const { uploadImage } = blobService;
 
 (async () => {
   const browser = await puppeteer.launch();

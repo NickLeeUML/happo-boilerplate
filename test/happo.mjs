@@ -4,6 +4,9 @@ import dotenv from 'dotenv';
 const HAPPO_API_KEY = process.env.HAPPO_API_KEY;
 const HAPPO_API_SECRET = process.env.HAPPO_API_SECRET;
 
+import blobService from './azure/blobService.js';
+const { getBlobUrl } = blobService;
+
 const token = new Buffer(`${HAPPO_API_KEY}:${HAPPO_API_SECRET}`).toString('base64');
 
 export const getReportStatus = async function(reportId){
@@ -49,3 +52,11 @@ export const createReport = async function(sha, imageURLArray){
 }
 
 export const completeReport = async function(sha, imageURLArray){}
+
+
+function uploadLogic(data){
+    const buff = new Buffer(data, 'base64');
+    getBlobUrl('screenshots', buff)
+
+
+}
