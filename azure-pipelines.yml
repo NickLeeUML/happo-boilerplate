@@ -27,7 +27,9 @@ steps:
 - script: |
     echo PREVIOUS_SHA
 - script: | 
-    node test/puppeteer.js
+    pwd
+    ls
+    node src/test/puppeteer.js
 
 - script: |
     npm install
