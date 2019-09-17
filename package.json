@@ -10,6 +10,7 @@
     "happo": "happo",
     "happo-ci-travis": "",
     "happo-ci": "happo-ci",
+    "build-ui-test": "webpack --config ./test/ui-webpack.config.babel.js",
     "ui-test": "node src/test/puppeteer.js"
   },
   "devDependencies": {
@@ -57,6 +58,7 @@
   },
   "dependencies": {
     "@azure/storage-blob": "^10.5.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "azure-storage": "^2.10.3",
     "classnames": "^2.2.5",
     "dotenv": "^8.1.0",
@@ -81,6 +83,7 @@
     "react-router-redux": "5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "request-promise": "^4.2.4",
     "styled-components": "^3.2.1",
     "styled-props": "^1.1.2",
     "styled-tools": "^0.4.0",

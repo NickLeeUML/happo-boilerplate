@@ -1,5 +1,21 @@
 const { RemoteBrowserTarget } = require('happo.io');
 require('dotenv').config();
+//require('dotenv').config({path:__dirname+'/.env'});
+var fs = require('fs');
+
+console.log(process.env.HAPPO_API_KEY)
+/* Read File */
+//fs.readFile(__dirname+'/.env', bar);
+
+function bar (err, data)
+  {
+  /* If an error exists, show it, otherwise show the file */
+  err ? Function("error","throw error")(err) : console.log(data.toString('utf8') );
+  };
+
+
+
+
 
 
 module.exports = {
