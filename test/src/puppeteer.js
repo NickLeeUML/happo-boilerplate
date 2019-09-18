@@ -1,3 +1,5 @@
+console.log("COMMIT VALUE: ", process.env.commit)
+
 const puppeteer = require('puppeteer');
 const { processScreenShot } = require('./processing.js');
 const {checkIfUnique, uploadImage, getBlobUrl, getHash} = require('./azure/blobService.js');
@@ -34,4 +36,3 @@ const {checkIfUnique, uploadImage, getBlobUrl, getHash} = require('./azure/blobS
 
 });
 
-console.log("COMMIT VALUE: ", process.env.commit)
