@@ -27,14 +27,14 @@ const getReportStatus = async function(reportId){
     request.get(options).then(console.log);
 } 
 
-const createReport = async function(sha, imageURLArray){
+const createReport = async function(sha, snapshot){
     // sha is a unique id usually the commit 
-
+    const imageArray = [snapshot];
     const body = {
-        snaps: [],
-        project: '',
-        message: '',
-        partial: true,
+        snaps: imageArray,
+        project: 'Puppeteer Azure Integration',
+        message: '', // pull request title
+        partial: false,
     };
 
 
@@ -67,28 +67,7 @@ function uploadLogic(data){
 
 }
 
-const processScreenShot = async function(componentName, variant, data){
-    const hash = convertToHash(data);
-    //const unique = await checkIfUnique(hash)  //will return undefined if not available 
-    const unique = await listSegment(hash)
-    if(unique){  // upload
-        const buff = new Buffer(data, 'base64');
-        await uploadImage(hash, buff)
-        const url = await getBlobUrl('screenshots', hash)
-        
-        // upload to happo here
-
-    } else {  // dont't upload 
-        console.log("not unique")
-        const buff = new Buffer(data, 'base64');
-
-        await uploadImage(hash, buff)
-        const url = await getBlobUrl('screenshots', hash);
-
-        //uploading to happo
-    }
-}
 
 module.exports = {
-    processScreenShot
+    createReport: createReport
 }
