@@ -25,14 +25,14 @@ const processScreenShot = async function(imageData, rawdata){
         await uploadImage(hash, buff);
         const url = await getBlobUrl('screenshots', hash);
         snapshot.url = url;
-        const result = await createReport('00001b', snapshot);   //check for error
+        const result = await createReport(process.env.commit, snapshot);   //check for error
         console.log("createReport result: ", result);
         // upload to happo here
 
     } else {  // dont't upload 
         console.log("not unique");
         const url = await getBlobUrl('screenshots', hash);
-        const result = await createReport('00001b', snapshot);   //check for error
+        const result = await createReport(process.env.commit, snapshot);   //check for error
         console.log("createReport result: ", result);
         //uploading to happo
     }
