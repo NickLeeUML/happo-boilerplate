@@ -3,13 +3,7 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 variables: 
-  APIKEY : $APIKEY
-  APISECRET : $APISECRET
-  PREVIOUS_SHA : f93a49547237e3a33ea17d48f9fc4105b047db5a
-  CURRENT_SHA : $(Build.SourceVersion)	
-  CHANGE_URL : https://github.com/NickLeeUML/happo-boilerplate/commit/$(Build.SourceVersion)
-  HAPPO_CONFIG_FILE : './config.js'
-
+  CURRENT_SHA : $(system.pullRequest.sourceCommitId)
 trigger:
 - master
 
@@ -23,6 +17,23 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    git checkout puppeteer
+    value=$( sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
+    echo "##vso[task.setvariable variable=CHANGE_URL]$value"
+    temp=$(git merge-base origin/$(System.PullRequest.TargetBranch) $(System.PullRequest.SourceBranch))
+    echo "##vso[task.setvariable variable=PREVIOUS_SHA]$temp"
+  displayName: 'setting git variables' 
+
+- script: |
+    echo PREVIOUS_SHA
+- script: |
     npm install
-    npm run happo-ci
-  displayName: 'yarn install and run happo'
+  displayName: 'install packages'
+
+- script: | 
+    commit=$CURRENT_SHA npm run ui-test
+  displayName: 'run ui-test'
+
+# - script: | 
+#       npm run happo-ci
+#   displayName: 'run happo-ci'
