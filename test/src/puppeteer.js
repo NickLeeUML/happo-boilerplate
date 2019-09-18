@@ -34,5 +34,5 @@ const {checkIfUnique, uploadImage, getBlobUrl, getHash} = require('./azure/blobS
   // await uploadImage('Stackoverflow',buff)
 
 
-});
+})();
 
