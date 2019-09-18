@@ -32,4 +32,6 @@ const {checkIfUnique, uploadImage, getBlobUrl, getHash} = require('./azure/blobS
   // await uploadImage('Stackoverflow',buff)
 
 
-})();
+});
+
+console.log("COMMIT VALUE: ", process.env.commit)

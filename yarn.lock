@@ -4756,9 +4756,11 @@ ignore@^3.3.5:
   version "3.3.10"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
 
-image-size@^0.7.5:
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.7.5.tgz#269f357cf5797cb44683dfa99790e54c705ead04"
+image-size@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.8.1.tgz#d1dd4167a43196b1cb5fe58f2169340cdc21f862"
+  dependencies:
+    queue "6.0.1"
 
 image-size@~0.5.0:
   version "0.5.5"
@@ -7622,6 +7624,12 @@ querystring-es3@^0.2.0:
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
+
+queue@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/queue/-/queue-6.0.1.tgz#abd5a5b0376912f070a25729e0b6a7d565683791"
+  dependencies:
+    inherits "~2.0.3"
 
 qw@~1.0.1:
   version "1.0.1"
