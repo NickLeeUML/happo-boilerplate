@@ -1,5 +1,5 @@
 //import '@babel/polyfill';
-require('dotenv').config({path:__dirname+'/../../../.env'});
+require('dotenv').config({ path: __dirname + '/../../../.env' });
 const azure = require('azure-storage');
 const { Aborter, BlobURL, BlockBlobURL, ContainerURL, ServiceURL, SharedKeyCredential, StorageURL, uploadStreamToBlockBlob } = require('@azure/storage-blob');
 const sizeOf = require('image-size')
@@ -47,20 +47,20 @@ async function checkIfUnique(name) {
     return url;
 }
 
-function listSegment(name){
-    return new Promise( (resolve, reject ) => { 
-        blobService.listBlobsSegmentedWithPrefix('screenshots', name, null, function(error, result){
-            if(error){
+function listSegment(name) {
+    return new Promise((resolve, reject) => {
+        blobService.listBlobsSegmentedWithPrefix('screenshots', name, null, function (error, result) {
+            if (error) {
                 console.log("Error: ", error);
                 reject(error)
             } else {
-                if(result.entries.lenght > 0 ) {
+                if (result.entries.lenght > 0) {
                     resolve(false)  // is not unique 
                 } else {
                     resolve(true)  // is unique 
                 }
             }
-        })  
+        })
     })
 }
 

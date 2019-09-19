@@ -31,7 +31,7 @@ steps:
   displayName: 'install packages'
 
 - script: | 
-    commit=$CURRENT_SHA npm run ui-test
+    CURRENT_SHA=$CURRENT_SHA CHANGE_URL=$CHANGE_URL PREVIOUS_SHA=$PREVIOUS_SHA npm run ui-test
   displayName: 'run ui-test'
 
 # - script: | 

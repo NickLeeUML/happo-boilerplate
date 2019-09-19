@@ -1,14 +1,14 @@
 
 const request = require('request-promise');
-const { 
-    checkIfUnique, 
-    uploadImage, 
-    getBlobUrl, 
-    convertToHash, 
+const {
+    checkIfUnique,
+    uploadImage,
+    getBlobUrl,
+    convertToHash,
     listSegment } = require('./azure/blobService.js');
 
 //require('dotenv').config()
-require('dotenv').config({path:__dirname+'/.env'});
+require('dotenv').config({ path: __dirname + '/.env' });
 const HAPPO_API_KEY = process.env.HAPPO_API_KEY;
 const HAPPO_API_SECRET = process.env.HAPPO_API_SECRET;
 
@@ -17,7 +17,7 @@ const blobService = require('./azure/blobService.js')
 
 const token = new Buffer(`${HAPPO_API_KEY}:${HAPPO_API_SECRET}`).toString('base64');
 
-const getReportStatus = async function(reportId){
+const getReportStatus = async function (reportId) {
     const options = {
         url: `https://happo.io/api/reports/${reportId}/status`,
         headers: {
@@ -25,9 +25,9 @@ const getReportStatus = async function(reportId){
         },
     };
     request.get(options).then(console.log);
-} 
+}
 
-const createReport = async function(sha, snapshot){
+const createReport = async function (sha, snapshot) {
     // sha is a unique id usually the commit 
     const imageArray = [snapshot];
     const body = {
@@ -59,14 +59,44 @@ const createReport = async function(sha, snapshot){
     });
 }
 
-const completeReport = async function(sha, imageURLArray){}
+const completeReport = async function (sha, imageURLArray) { }
 
-function uploadLogic(data){
+function uploadLogic(data) {
     const buff = new Buffer(data, 'base64');
     getBlobUrl('screenshots', buff)
 
 }
 
+const compare = async function(sha1, sha2) {
+
+    const options = {
+        url: `https://happo.io//api/reports/${sha1}/compare/${sha2}`,
+        headers: {
+            Authorization: `Basic ${token}`,
+        },
+        body: body,
+        json: true,
+    };
+
+    return new Promise((resolve, reject) => {
+        const body  = {
+            project:'Puppeteer',
+            link: '',  //needed!
+            message:'',
+            author:'', // email address for the author of th
+        };
+
+        request
+            .post(options)
+            .then((data) => {
+                //handle error
+                resolve(data);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+    })
+}
 
 module.exports = {
     createReport: createReport
