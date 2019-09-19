@@ -67,10 +67,10 @@ function uploadLogic(data) {
 
 }
 
-const compare = async function(sha1, sha2) {
+const compare = async function() {
 
     const options = {
-        url: `https://happo.io//api/reports/${sha1}/compare/${sha2}`,
+        url: `https://happo.io//api/reports/${process.env.PREVIOUS_SHA}/compare/${process.env.CURRENT_SHA}`,
         headers: {
             Authorization: `Basic ${token}`,
         },
@@ -80,10 +80,10 @@ const compare = async function(sha1, sha2) {
 
     return new Promise((resolve, reject) => {
         const body  = {
-            project:'Puppeteer',
-            link: '',  //needed!
-            message:'',
-            author:'', // email address for the author of th
+            project:'Puppeteer Azure Integration',
+            link: process.env.CHANGE_URL,
+            message:'first comparison test',
+            author:'nicholas_lee@uml.edu',
         };
 
         request
@@ -99,5 +99,6 @@ const compare = async function(sha1, sha2) {
 }
 
 module.exports = {
-    createReport: createReport
+    createReport: createReport,
+    compare: compare
 }

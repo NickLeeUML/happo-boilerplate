@@ -1,14 +1,11 @@
-
 const sizeOf = require('image-size');
-
 const {
     checkIfUnique,
     uploadImage,
     getBlobUrl,
     convertToHash,
     listSegment } = require('./azure/blobService.js');
-
-const { createReport } = require('./happo.js');
+const { createReport, compare } = require('./happo.js');
 
 const processScreenShot = async function (imageData, rawdata) {
 
