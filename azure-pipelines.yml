@@ -17,7 +17,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    git checkout master
+    git checkout happoConfigurationB
     value=$( sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
     echo "##vso[task.setvariable variable=CHANGE_URL]$value"
     temp=$(git merge-base origin/$(System.PullRequest.TargetBranch) $(System.PullRequest.SourceBranch))
