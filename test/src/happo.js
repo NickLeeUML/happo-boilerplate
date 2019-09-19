@@ -76,7 +76,7 @@ const compare = async function() {
     };
 
     const options = {
-        url: `https://happo.io//api/reports/${process.env.PREVIOUS_SHA}/compare/${process.env.CURRENT_SHA}`,
+        url: `https://happo.io/api/reports/${process.env.PREVIOUS_SHA}/compare/${process.env.CURRENT_SHA}`,
         headers: {
             Authorization: `Basic ${token}`,
         },
