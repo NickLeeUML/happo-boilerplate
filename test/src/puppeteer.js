@@ -18,7 +18,7 @@ async function runUI() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  const url = 'https://news.ycombinator.com/news'
+  const url = 'https://stackoverflow.com/'
 
   await page.goto(url, { waitUntil: 'networkidle0' });
   try {
@@ -32,8 +32,8 @@ async function runUI() {
 
   const imageData = {
     url: null,
-    component: 'YCombinator',
-    variant: 'News',
+    component: 'Stackoverflow',
+    variant: 'Home',
     target: 'Chrome'
   }
 
