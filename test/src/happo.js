@@ -68,6 +68,12 @@ function uploadLogic(data) {
 }
 
 const compare = async function() {
+    const body  = {
+        project:'Puppeteer Azure Integration',
+        link: process.env.CHANGE_URL,
+        message:'first comparison test',
+        author:'nicholas_lee@uml.edu',
+    };
 
     const options = {
         url: `https://happo.io//api/reports/${process.env.PREVIOUS_SHA}/compare/${process.env.CURRENT_SHA}`,
@@ -79,20 +85,17 @@ const compare = async function() {
     };
 
     return new Promise((resolve, reject) => {
-        const body  = {
-            project:'Puppeteer Azure Integration',
-            link: process.env.CHANGE_URL,
-            message:'first comparison test',
-            author:'nicholas_lee@uml.edu',
-        };
+       
 
         request
             .post(options)
             .then((data) => {
                 //handle error
+                console.log("data: ", data);
                 resolve(data);
             })
             .catch((error) => {
+                console.log("error: ", error);
                 reject(error);
             });
     })
