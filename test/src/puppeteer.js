@@ -42,7 +42,7 @@ async function runUI() {
 
   await browser.close();
 
-  await compare()
+  //await compare()
   // await uploadImage('Stackoverflow',buff)
 
 };
