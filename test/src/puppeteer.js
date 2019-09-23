@@ -1,6 +1,7 @@
 console.log("PREIVOUS_SHA: ", process.env.PREVIOUS_SHA);
 console.log("CURRENT_SHA: ", process.env.CURRENT_SHA);
 console.log("CHANGE_URL: ", process.env.CHANGE_URL);
+console.log("SHA: ", process.env.SHA);
 
 const puppeteer = require('puppeteer');
 const { processScreenShot } = require('./processing.js');
@@ -20,12 +21,12 @@ async function runUI() {
   const url = 'https://news.ycombinator.com/'
 
   await page.goto(url, { waitUntil: 'networkidle0' });
-  try {
-    const elemText = await page.$eval("body > header > div > ol.list-reset.grid.gs4 > li > a", elem => elem.innerText)
-    console.log('element innerText:', elemText)
-  } catch (err) {
-    console.log(err)
-  }
+  // try {
+  //   const elemText = await page.$eval("body > header > div > ol.list-reset.grid.gs4 > li > a", elem => elem.innerText)
+  //   console.log('element innerText:', elemText)
+  // } catch (err) {
+  //   console.log(err)
+  // }
 
   const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
 
