@@ -16,7 +16,7 @@ async function runUI() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  const url = 'https://news.ycombinator.com/'
+  const url = 'https://997addd2.ngrok.io/Website.UI.Template.v6.happo-url/patterns/components-link-list-featured.default.html'
 
   await page.goto(url, { waitUntil: 'networkidle0' });
   // try {
@@ -30,8 +30,8 @@ async function runUI() {
 
   const imageData = {
     url: null,
-    component: 'Ycombinator',
-    variant: 'News',
+    component: 'Linked List',
+    variant: 'Featured',
     target: 'Chrome'
   }
 
