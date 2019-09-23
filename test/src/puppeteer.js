@@ -16,7 +16,7 @@ async function runUI() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  const url = 'https://997addd2.ngrok.io/Website.UI.Template.v6.happo-url/patterns/components-link-list-featured.default.html'
+  const url = process.env.URL
 
   await page.goto(url, { waitUntil: 'networkidle2' });
   // try {
