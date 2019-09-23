@@ -18,7 +18,7 @@ async function runUI() {
 
   const url = 'https://997addd2.ngrok.io/Website.UI.Template.v6.happo-url/patterns/components-link-list-featured.default.html'
 
-  await page.goto(url, { waitUntil: 'networkidle0' });
+  await page.goto(url, { waitUntil: 'networkidle2' });
   // try {
   //   const elemText = await page.$eval("body > header > div > ol.list-reset.grid.gs4 > li > a", elem => elem.innerText)
   //   console.log('element innerText:', elemText)
