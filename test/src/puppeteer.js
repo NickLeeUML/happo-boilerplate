@@ -11,9 +11,7 @@ const { createReport, compare } = require('./happo.js');
 
 async function runUI() {
   // return new Promise((resolve, reject)=>{
-
   // })
-
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
