@@ -8,7 +8,6 @@ const { processScreenShot } = require('./processing.js');
 const { checkIfUnique, uploadImage, getBlobUrl, getHash } = require('./azure/blobService.js');
 const { createReport, compare } = require('./happo.js');
 
-
 async function runUI() {
   // return new Promise((resolve, reject)=>{
   // })
