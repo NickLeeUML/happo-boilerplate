@@ -37,7 +37,7 @@ steps:
 
 - script: | 
     git checkout $CURRENT_SHA
-    URL=https://997addd2.ngrok.io/Website.UI.Template.v6.happo-url/patterns/components-link-list-featured.default.htmlCURRENT_SHA=$CURRENT_SHA CHANGE_URL=$CHANGE_URL PREVIOUS_SHA=$PREVIOUS_SHA SHA=$CURRENT_SHA npm run ui-test
+    URL=https://997addd2.ngrok.io/Website.UI.Template.v6.happo-url/patterns/components-link-list-featured.default.html CURRENT_SHA=$CURRENT_SHA CHANGE_URL=$CHANGE_URL PREVIOUS_SHA=$PREVIOUS_SHA SHA=$CURRENT_SHA npm run ui-test
   displayName: 'Run happo on the current HEAD commit'
 
 - script: | 
