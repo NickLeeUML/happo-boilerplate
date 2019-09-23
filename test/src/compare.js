@@ -6,5 +6,4 @@ async function runCompare(){
 
 }
 
-
 runCompare();
