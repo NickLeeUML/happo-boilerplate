@@ -11,7 +11,8 @@
     "happo-ci-travis": "",
     "happo-ci": "happo-ci",
     "build-ui-test": "webpack --config ./test/ui-webpack.config.babel.js",
-    "ui-test": "node test/src/puppeteer.js"
+    "ui-test": "node test/src/puppeteer.js",
+    "ui-compare": "node test/src/compare.js"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.41",

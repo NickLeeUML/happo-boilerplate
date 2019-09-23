@@ -2,7 +2,6 @@ console.log("PREIVOUS_SHA: ", process.env.PREVIOUS_SHA);
 console.log("CURRENT_SHA: ", process.env.CURRENT_SHA);
 console.log("CHANGE_URL: ", process.env.CHANGE_URL);
 
-
 const puppeteer = require('puppeteer');
 const { processScreenShot } = require('./processing.js');
 const { checkIfUnique, uploadImage, getBlobUrl, getHash } = require('./azure/blobService.js');
@@ -18,7 +17,7 @@ async function runUI() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  const url = 'https://stackoverflow.com/'
+  const url = 'https://news.ycombinator.com/'
 
   await page.goto(url, { waitUntil: 'networkidle0' });
   try {
@@ -32,8 +31,8 @@ async function runUI() {
 
   const imageData = {
     url: null,
-    component: 'Stackoverflow',
-    variant: 'Home',
+    component: 'Ycombinator',
+    variant: 'News',
     target: 'Chrome'
   }
 
@@ -42,7 +41,7 @@ async function runUI() {
 
   await browser.close();
 
-  await compare()
+  //await compare()
   // await uploadImage('Stackoverflow',buff)
 
 };

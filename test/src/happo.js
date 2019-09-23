@@ -71,7 +71,7 @@ const compare = async function() {
     const body  = {
         project:'Puppeteer Azure Integration',
         link: process.env.CHANGE_URL,
-        message:'first comparison test',
+        message:'second comparison test',
         author:'nicholas_lee@uml.edu',
     };
 
