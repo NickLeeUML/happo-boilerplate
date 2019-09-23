@@ -17,7 +17,6 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    git checkout happoConfigurationC
     value=$( sed 's/....$//' <<< $(System.PullRequest.SourceRepositoryURI))/pull/$(System.PullRequest.PullRequestNumber)
     echo "##vso[task.setvariable variable=CHANGE_URL]$value"
     temp=$(git merge-base origin/$(System.PullRequest.TargetBranch) $(System.PullRequest.SourceBranch))
@@ -31,11 +30,12 @@ steps:
   displayName: 'install packages'
 
 - script: | 
-
+    git checkout $PREVIOUS_SHA
     CURRENT_SHA=$CURRENT_SHA CHANGE_URL=$CHANGE_URL PREVIOUS_SHA=$PREVIOUS_SHA SHA=$PREVIOUS_SHA npm run ui-test
   displayName: 'Run happo on the commit which the PR is based on'
 
 - script: | 
+    git checkout $CURRENT_SHA
     CURRENT_SHA=$CURRENT_SHA CHANGE_URL=$CHANGE_URL PREVIOUS_SHA=$PREVIOUS_SHA SHA=$CURRENT_SHA npm run ui-test
   displayName: 'Run happo on the current HEAD commit'
 
