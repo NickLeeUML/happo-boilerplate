@@ -41,9 +41,7 @@ async function runUI() {
 
   //await compare()
   // await uploadImage('Stackoverflow',buff)
-
 };
-
 
 runUI()
 
