@@ -6,10 +6,20 @@ console.log("SHA: ", process.env.SHA);
 const puppeteer = require('puppeteer');
 const { processScreenshot } = require('./processing.js');
 const { checkIfUnique, uploadImage, getBlobUrl, getHash } = require('./azure/blobService.js');
-const { createReport, compare } = require('./happo.js');
+const { createReport, compare, completeReport } = require('./happo.js');
 
-const url = `${process.env.URL}patterns/components-link-list-featured.default.html`
-const localUrl = 'http://localhost:8080/Website.UI.Template.v6.happo-url/patterns/'
+const url = `${process.env.URL}patterns/components-link-list-featured.default.html`;
+const localUrl = 'http://localhost:8080/Website.UI.Template.v6.happo-url/patterns/';
+
+
+function wait(func, time){
+    return new Promise((resolve, reject) => {
+
+      setTimeout(func,time)
+
+    }) 
+} 
+
 
 const endpoints = {
   catalogs: [
@@ -79,9 +89,6 @@ async function runUI() {
 
 //runUI()
 
-async function start() {
-  await runUI()
-}
 
 
 async function catalogCourse(domain) {
@@ -129,6 +136,8 @@ async function catalogCourse(domain) {
 }
 
 async function newsBlocksSlider(domain){
+  const snapshots = [];
+
 
   const url = `${domain}/patterns/components-news-blocks---slider.default.html`;
   const browser = await puppeteer.launch()
@@ -149,7 +158,8 @@ async function newsBlocksSlider(domain){
     target: 'Chrome'
   }
   const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
-  await processScreenshot(metaData, data)
+  const snapshot = await processScreenshot(metaData, data)
+  snapshots.push(snapshot);
 
 
   try {
@@ -159,6 +169,25 @@ async function newsBlocksSlider(domain){
   } catch(err){
     console.log("Whoops: ", err);
   }
+
+
+  // async function func() {   //this value?
+  //   const metaData = {
+  //     url: null,
+  //     component: 'News Blocks -- slider',
+  //     variant: 'Button Clicked',
+  //     target: 'Chrome'
+  //   }
+  //   const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+  //   const snapshot = await processScreenshot(metaData, data)
+  //   snapshot.push(snapshot);
+  // }
+
+  // const waitedFunc = wait(func,500)
+  // await waitedFunc()
+
+
+
   setTimeout(async  function(){
     const metaData = {
       url: null,
@@ -167,12 +196,27 @@ async function newsBlocksSlider(domain){
       target: 'Chrome'
     }
     const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
-
-    await processScreenshot(metaData, data)
-  
+    const snapshot = await processScreenshot(metaData, data)
+    snapshot.push(snapshot);
     //await page.screenshot({fullPage: true, path: "after.png"})
+
+
+    try {
+      console.log("Snapshots: ", snapshots);
+      const result = await createReport(process.env.SHA, snapshots);  //check for error
+      console.log("createReport result: ", result);
+    } catch(error){
+        console.log(error) 
+    }
     await browser.close();
+
+
 
   }, 500)
   
+}
+
+
+async function start() {
+  await newBlocksSlider(process.env.URL)
 }
