@@ -218,7 +218,7 @@ async function newsBlocksSlider(domain){
 
 
 async function start() {
-  await newBlocksSlider(process.env.URL)
+  await newsBlocksSlider(process.env.URL)
 }
 
 
