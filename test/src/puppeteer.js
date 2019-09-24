@@ -220,3 +220,6 @@ async function newsBlocksSlider(domain){
 async function start() {
   await newBlocksSlider(process.env.URL)
 }
+
+
+start()
