@@ -197,7 +197,7 @@ async function newsBlocksSlider(domain){
     }
     const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
     const snapshot = await processScreenshot(metaData, data)
-    snapshot.push(snapshot);
+    snapshots.push(snapshot);
     //await page.screenshot({fullPage: true, path: "after.png"})
 
 
