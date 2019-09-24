@@ -7,7 +7,7 @@ const {
     listSegment } = require('./azure/blobService.js');
 const { createReport, compare } = require('./happo.js');
 
-const processScreenShot = async function (imageData, rawdata) {
+const processScreenshot = async function (imageData, rawdata) {
 
     const buff = new Buffer(rawdata, 'base64');
     const size = sizeOf(buff);
@@ -26,15 +26,27 @@ const processScreenShot = async function (imageData, rawdata) {
         console.log("createReport result: ", result);
         // upload to happo here
 
-    } else {  // don't upload 
+    } else {  // don't upload new 
         console.log("not unique");
-        const url = await getBlobUrl('screenshots', hash)
-        const result = await createReport(process.env.SHA, snapshot)  //check for error
-        console.log("createReport result: ", result)
+        const url = await getBlobUrl('screenshots', hash);
+        snapshot.url = url; 
+
+        const result = await createReport(process.env.SHA, snapshot);  //check for error
+        console.log("createReport result: ", result);
         //uploading to happo
     }
 }
 
+async function processArrayofSnapshots(snapshots){  
+    return new Promise((resolve, reject) => {
+
+
+
+
+    })
+}
+
+
 module.exports = {
-    processScreenShot
+    processScreenshot
 }

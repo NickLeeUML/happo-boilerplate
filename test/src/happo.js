@@ -32,9 +32,9 @@ const createReport = async function (sha, snapshot) {
     const imageArray = [snapshot];
     const body = {
         snaps: imageArray,
-        project: 'Puppeteer Azure Integration',
+        project: 'Puppeteer Azure Integration w/ partials',
         message: '', // pull request title
-        partial: false,
+        partial: true,
     };
 
 
@@ -59,7 +59,13 @@ const createReport = async function (sha, snapshot) {
     });
 }
 
-const completeReport = async function (sha, imageURLArray) { }
+const completeReport = async function () {  //used when all screenshots are done
+    return new Promise( (resolve, reject) => {
+        request.post({
+            url: `https://happo.io/api/reports/${process.env.SHA}/complete`
+        })
+    })
+ }
 
 function uploadLogic(data) {
     const buff = new Buffer(data, 'base64');
