@@ -19,11 +19,17 @@ const token = new Buffer(`${HAPPO_API_KEY}:${HAPPO_API_SECRET}`).toString('base6
 
 const reportStatus = async function (reportId) {
     return new Promise((resolve, reject) => {
+        const body = {
+            project: 'Puppeteer Azure Integration w/ partials',
+        };
+
         const options = {
             url: `https://happo.io/api/reports/${reportId}/status`,
             headers: {
                 Authorization: `Basic ${token}`,
             },
+            body: body,
+            json:true,
         };
         request.get(options)
         .then((data) => {
