@@ -107,6 +107,7 @@ const compare = async function() {
 }
 
 module.exports = {
+    completeReport: completeReport,
     createReport: createReport,
     compare: compare
 }
