@@ -6,7 +6,7 @@ console.log("SHA: ", process.env.SHA);
 const puppeteer = require('puppeteer');
 const { processScreenshot } = require('./processing.js');
 const { checkIfUnique, uploadImage, getBlobUrl, getHash } = require('./azure/blobService.js');
-const { createReport, compare, completeReport } = require('./happo.js');
+const { createReport, compare, completeReport, reportStatus } = require('./happo.js');
 
 const url = `${process.env.URL}patterns/components-link-list-featured.default.html`;
 const localUrl = 'http://localhost:8080/Website.UI.Template.v6.happo-url/patterns/';
@@ -216,7 +216,10 @@ async function newsBlocksSlider(domain){
   const result = await createReport(process.env.SHA, snapshots);  //check for error
   console.log("Result", result)
   await browser.close();
-  await completeReport()
+  const status = await reportStatus(process.env.SHA);
+  console.log("report status: ", status);
+  const completed = await completeReport()
+  console.log("completed: ", completed);
 }
 
 async function start() {
