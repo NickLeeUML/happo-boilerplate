@@ -28,8 +28,7 @@ const getReportStatus = async function (reportId) {
 }
 
 const createReport = async function (sha, snapshots) {
-    // sha is a unique id usually the commit 
-    // const imageArray = [snapshot];
+    
     const body = {
         snaps: snapshots,
         project: 'Puppeteer Azure Integration w/ partials',
