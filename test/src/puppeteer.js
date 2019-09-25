@@ -220,6 +220,9 @@ async function newsBlocksSlider(domain){
   console.log("report status: ", status);
   const completed = await completeReport()
   console.log("completed: ", completed);
+
+  const statusb = await reportStatus(process.env.SHA);
+  console.log("report status after complete: ", statusb);
 }
 
 async function start() {
