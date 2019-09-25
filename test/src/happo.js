@@ -27,11 +27,11 @@ const getReportStatus = async function (reportId) {
     request.get(options).then(console.log);
 }
 
-const createReport = async function (sha, snapshot) {
+const createReport = async function (sha, snapshots) {
     // sha is a unique id usually the commit 
     // const imageArray = [snapshot];
     const body = {
-        snaps: imageArray,
+        snaps: snapshots,
         project: 'Puppeteer Azure Integration w/ partials',
         message: '', // pull request title
         partial: true,
