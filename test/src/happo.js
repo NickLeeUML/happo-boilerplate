@@ -74,7 +74,7 @@ function uploadLogic(data) {
 
 const compare = async function() {
     const body  = {
-        project:'Puppeteer Azure Integration',
+        project:'Puppeteer Azure Integration w/ partials',
         link: process.env.CHANGE_URL,
         message:'second comparison test',
         author:'nicholas_lee@uml.edu',
