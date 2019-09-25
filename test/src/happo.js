@@ -27,9 +27,11 @@ const reportStatus = async function (reportId) {
         };
         request.get(options)
         .then((data) => {
+            console.log("report status data: ", data);
             resolve(data);
         })
         .catch((error) => {
+            console.log("report status error: ", error);
             reject(error);
         })
 
