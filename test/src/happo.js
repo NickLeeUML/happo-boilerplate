@@ -66,6 +66,12 @@ const completeReport = async function () {  //used when all screenshots are done
                 Authorization: `Basic ${token}`,
             },
         })
+        .then((data) => {
+            resolve(data)
+        })
+        .catch((error) => {
+            reject(error)
+        })
     })
  }
 
