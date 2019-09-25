@@ -188,29 +188,29 @@ async function newsBlocksSlider(domain){
 
 
 
-  // setTimeout(async  function(){
-  //   const metaData = {
-  //     url: null,
-  //     component: 'News Blocks -- slider',
-  //     variant: 'Button Clicked',
-  //     target: 'Chrome'
-  //   }
-  //   const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
-  //   const snapshot = await processScreenshot(metaData, data)
-  //   snapshots.push(snapshot);
-  //   //await page.screenshot({fullPage: true, path: "after.png"})
+  setTimeout(async  function(){
+    const metaData = {
+      url: null,
+      component: 'News Blocks -- slider',
+      variant: 'Button Clicked',
+      target: 'Chrome'
+    }
+    const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+    const snapshot = await processScreenshot(metaData, data)
+    snapshots.push(snapshot);
+    //await page.screenshot({fullPage: true, path: "after.png"})
 
 
-  //   try {
-  //     console.log("Snapshots: ", snapshots);
-  //     const result = await createReport(process.env.SHA, snapshots);  //check for error
-  //     console.log("createReport result: ", result);
-  //   } catch(error){
-  //       console.log(error) 
-  //   }
-  //   await browser.close();
+    try {
+      console.log("Snapshots: ", snapshots);
+      const result = await createReport(process.env.SHA, snapshots);  //check for error
+      console.log("createReport result: ", result);
+    } catch(error){
+        console.log(error) 
+    }
+    await browser.close();
 
-  // }, 500)
+  }, 500)
   
 
   const result = await createReport(process.env.SHA, snapshots);  //check for error
