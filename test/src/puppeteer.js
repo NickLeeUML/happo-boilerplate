@@ -216,7 +216,8 @@ async function newsBlocksSlider(domain){
   const result = await createReport(process.env.SHA, snapshots);  //check for error
   console.log("Result", result)
   await browser.close();
-  await completeReport()
+  const completed = await completeReport()
+  console.log("completed: ", completed);
 }
 
 async function start() {

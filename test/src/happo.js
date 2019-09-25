@@ -61,7 +61,10 @@ const createReport = async function (sha, snapshots) {
 const completeReport = async function () {  //used when all screenshots are done
     return new Promise( (resolve, reject) => {
         request.post({
-            url: `https://happo.io/api/reports/${process.env.SHA}/complete`
+            url: `https://happo.io/api/reports/${process.env.SHA}/complete`,
+            headers: {
+                Authorization: `Basic ${token}`,
+            },
         })
     })
  }
