@@ -17,14 +17,24 @@ const blobService = require('./azure/blobService.js')
 
 const token = new Buffer(`${HAPPO_API_KEY}:${HAPPO_API_SECRET}`).toString('base64');
 
-const getReportStatus = async function (reportId) {
-    const options = {
-        url: `https://happo.io/api/reports/${reportId}/status`,
-        headers: {
-            Authorization: `Basic ${token}`,
-        },
-    };
-    request.get(options).then(console.log);
+const reportStatus = async function (reportId) {
+    return new Promise((resolve, reject) => {
+        const options = {
+            url: `https://happo.io/api/reports/${reportId}/status`,
+            headers: {
+                Authorization: `Basic ${token}`,
+            },
+        };
+        request.get(options)
+        .then((data) => {
+            resolve(data);
+        })
+        .catch((error) => {
+            reject(error);
+        })
+
+    })
+
 }
 
 const createReport = async function (sha, snapshots) {
@@ -120,5 +130,6 @@ const compare = async function() {
 module.exports = {
     completeReport: completeReport,
     createReport: createReport,
-    compare: compare
+    compare: compare,
+    reportStatus: reportStatus
 }
