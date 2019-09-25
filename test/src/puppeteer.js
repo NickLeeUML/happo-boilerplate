@@ -87,8 +87,6 @@ async function runUI() {
   //await uploadImage('Stackoverflow',buff)
 };
 
-//runUI()
-
 
 
 async function catalogCourse(domain) {
@@ -225,9 +223,40 @@ async function newsBlocksSlider(domain){
   console.log("report status after complete: ", statusb);
 }
 
-async function start() {
-  await newsBlocksSlider(process.env.URL)
+const pupeteerFunctionsArray = [newsBlocksSlider, catalogCourse ];
+
+function returnsPromise(puppeteerFunction, domain) {
+  return new Promise( async (resolve, reject) => {
+    let value = await puppeteerFunction(domain).catch((error)=>{
+      reject(error)
+    })
+    resolve(value);
+  })
 }
 
+function processScripts(puppeteerScripts){
+  return new Promise((resolve, reject) => {
+    let result = puppeteerScripts.reduce( async (accum, func) => {
+      await accum;
+
+      return returnsPromise(func,process.env.URL)
+      
+    }, Promise.resolve())
+
+    result.then(
+      (value) => {
+          resolve(value);
+      },
+      (reason) => {
+          reject(reason);
+      }
+  );
+  })
+}
+
+async function start() {
+  //await newsBlocksSlider(process.env.URL)
+  await processScripts()
+}
 
 start()
