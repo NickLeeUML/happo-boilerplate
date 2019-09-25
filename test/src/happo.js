@@ -65,6 +65,7 @@ const completeReport = async function () {  //used when all screenshots are done
             headers: {
                 Authorization: `Basic ${token}`,
             },
+            json:true,
         })
         .then((data) => {
             resolve(data)
