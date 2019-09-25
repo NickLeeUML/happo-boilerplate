@@ -19,17 +19,13 @@ const token = new Buffer(`${HAPPO_API_KEY}:${HAPPO_API_SECRET}`).toString('base6
 
 const reportStatus = async function (reportId) {
     return new Promise((resolve, reject) => {
-        const body = {
-            project: 'Puppeteer Azure Integration w/ partials',
-        };
+      
 
         const options = {
-            url: `https://happo.io/api/reports/${reportId}/status`,
+            url: `https://happo.io/api/reports/${reportId}/status?project=Puppeteer-Azure-Integration-partials`,
             headers: {
                 Authorization: `Basic ${token}`,
             },
-            body: body,
-            json:true,
         };
         request.get(options)
         .then((data) => {
@@ -49,7 +45,7 @@ const createReport = async function (sha, snapshots) {
     
     const body = {
         snaps: snapshots,
-        project: 'Puppeteer Azure Integration w/ partials',
+        project: 'Puppeteer-Azure-Integration-partials',
         message: '', // pull request title
         partial: true,
     };
@@ -103,7 +99,7 @@ function uploadLogic(data) {
 
 const compare = async function() {
     const body  = {
-        project:'Puppeteer Azure Integration w/ partials',
+        project:'Puppeteer-Azure-Integration-partials',
         link: process.env.CHANGE_URL,
         message:'second comparison test',
         author:'nicholas_lee@uml.edu',
