@@ -149,7 +149,7 @@ async function newsBlocksSlider(domain){
   await page.goto(url, {waitUntil: 'networkidle2'});
 
   //await page.screenshot({fullPage: true, path:"before.png"});
-  const metaData = {
+  let metaData = {
     url: null,
     component: 'News Blocks -- slider',
     variant: 'default',
@@ -187,7 +187,7 @@ async function newsBlocksSlider(domain){
 
 
   setTimeout(async  function(){
-    const metaData = {
+    let metaData = {
       url: null,
       component: 'News Blocks -- slider',
       variant: 'Button Clicked',
@@ -243,7 +243,7 @@ async function newsBlocksSlider(domain){
 
     await page.goto(url, {waitUntil: 'networkidle2'});
 
-    const metaData = {
+    let metaData = {
       url: null,
       component: 'News Blocks -- slider',
       variant: 'default',
@@ -265,7 +265,7 @@ async function newsBlocksSlider(domain){
 
 
     setTimeout(async  function() {  // Code  in here must run after button click is done
-      const metaData = {
+      let metaData = {
         url: null,
         component: 'News Blocks -- slider',
         variant: 'Button Clicked',
@@ -310,7 +310,7 @@ function catalogCoursePromise(domain) {
   
     await page.goto(url, { waitUntil: 'networkidle2' });
   
-    const metaData = {
+    let metaData = {
       url: null,
       component: 'Catalog Course',
       variant: 'default',
@@ -323,7 +323,7 @@ function catalogCoursePromise(domain) {
       button.click()
     })
     
-    const metaData = {
+     metaData = {
       url: null,
       component: 'Catalog Course',
       variant: 'Details Clicked',
