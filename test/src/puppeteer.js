@@ -223,7 +223,122 @@ async function newsBlocksSlider(domain){
   console.log("report status after complete: ", statusb);
 }
 
-const pupeteerFunctionsArray = [newsBlocksSlider, catalogCourse ];
+
+ function newsBlocksSliderPromise(domain){
+  return new Promise(async ( resolve, reject ) => {
+
+    const snapshots = [];
+
+    const url = `${domain}/patterns/components-news-blocks---slider.default.html`;
+
+    const browser = await puppeteer.launch()
+
+    const page = await browser.newPage();
+    
+    page.setViewport({
+      width: 1200,
+      height:600,
+      deviceScaleFactor: 1
+    })
+
+    await page.goto(url, {waitUntil: 'networkidle2'});
+
+    const metaData = {
+      url: null,
+      component: 'News Blocks -- slider',
+      variant: 'default',
+      target: 'Chrome'
+    }
+
+    const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+    const snapshot = await processScreenshot(metaData, data)
+    snapshots.push(snapshot);
+
+
+    try {
+      await page.$eval('body > form > div:nth-child(2) > div > uml-slider > div > div > div.comp-slider__buttons.sc-eqIVtm.hxsdAC > button.sc-bwzfXH.esZakx', (button) => {
+        button.click()
+      })
+    } catch(err){
+      console.log("Puppeteer button click error: ", err);
+    }
+
+
+    setTimeout(async  function() {  // Code  in here must run after button click is done
+      const metaData = {
+        url: null,
+        component: 'News Blocks -- slider',
+        variant: 'Button Clicked',
+        target: 'Chrome'
+      }
+      const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+      const snapshot = await processScreenshot(metaData, data)
+      snapshots.push(snapshot);
+      try {
+        console.log("Snapshots: ", snapshots);
+        const result = await createReport(process.env.SHA, snapshots);  //check for error
+        console.log("createReport result: ", result);
+      } catch(error){
+          console.log(error) 
+      }
+      await browser.close();
+
+    }, 500)
+  
+    const result = await createReport(process.env.SHA, snapshots);  //check for error
+    await browser.close();
+    resolve(result);
+
+  })
+}
+
+function catalogCoursePromise(domain) {
+  return new Promise((resolve, reject) => {
+      
+    const imageArray = [];
+
+    const url = `${domain}/patterns/components-catalog-course-default.default.html`;
+  
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+  
+    page.setViewport({
+      width: 1200,
+      height:600,
+      deviceScaleFactor: 1
+    })
+  
+    await page.goto(url, { waitUntil: 'networkidle2' });
+  
+    const metaData = {
+      url: null,
+      component: 'Catalog Course',
+      variant: 'default',
+      target: 'Chrome'
+    }
+    const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+    await processScreenshot(metaData, data)
+  
+    await page.$eval('body > form > uml-catalog-course > div > div > div.sc-hGoxap.bVyQSv > button', function(button){
+      button.click()
+    })
+    
+    const metaData = {
+      url: null,
+      component: 'Catalog Course',
+      variant: 'Details Clicked',
+      target: 'Chrome'
+    }
+    const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+    const result  = await processScreenshot(metaData, data)
+  
+    await browser.close();
+    resolve(result)
+
+  })
+}
+
+const pupeteerFunctionsArray = [newsBlocksSliderPromise, catalogCoursePromise ];
 
 function returnsPromise(puppeteerFunction, domain) {
   return new Promise( async (resolve, reject) => {
@@ -245,7 +360,9 @@ function processScripts(puppeteerScripts){
 
     result.then(
       (value) => {
-          resolve(value);
+        const completed = await completeReport()
+
+          resolve(completed);
       },
       (reason) => {
           reject(reason);
