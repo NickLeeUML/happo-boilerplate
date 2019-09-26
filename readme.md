@@ -13,16 +13,22 @@
         * compare
 
     ### Left Todo: 
-        1. Add support for partials 
-        2. Potentially, initial runs?
-        3. Error Handeling 
-        4. What todo when comparsion fails
+        1. How to do an Initial run when updating scrips?
+        2. Error Handeling 
+        3. What todo when comparsion fails
+
 
 ## puppeteer.js
-    This file provides functions for running puppeteer, clicking on DOM elements and taking     screenshots.
+    This file provides functions for running puppeteer, clicking on DOM elements and taking screenshots.
 
     ### Functions: 
-        * runUI
+        * catalogCourse
+        * newsBlocksSlider
+        * catalogCoursePromise
+        * newsBlocksSliderPromise
+        * promiseAll
+        * returnsPromise
+        * processScripts
     
     ### Left todo: 
         1. Add interactions with partials 
@@ -43,6 +49,13 @@
     The steps used in built-in Happo command ( hapo-ci ) are replicated here by script steps. The point of  this allows for the integration for GitHub and Happo.io while adding the ability to upload specific screenshots.
 
 
-
 ## todo: 
-    1.  In azure-pipelnes.yml the previous commit and current commit are being checked out, this should be done followed by building that commit and providing and endpoint to where it is built. Now i'm just re 
+    1.  In azure-pipelnes.yml the previous commit and current commit are being checked out, this should be done followed by building that commit and providing and endpoint to where it is built.
+
+### Basic example of Sequentially resolving array of promises 
+    From the functions returnsProise & processScripts
+    https://repl.it/repls/RealRelievedSpellchecker
+
+
+### Example commad  to test locally
+     URL=https://997addd2.ngrok.io/Website.UI.Template.v6.happo-url SHA=1111 npm run ui-test;
