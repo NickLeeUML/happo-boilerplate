@@ -293,7 +293,7 @@ async function newsBlocksSlider(domain){
 }
 
 function catalogCoursePromise(domain) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
       
     const imageArray = [];
 
