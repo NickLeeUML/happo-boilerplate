@@ -106,7 +106,7 @@ async function catalogCourse(domain) {
   await page.goto(url, { waitUntil: 'networkidle2' });
 
   //await page.screenshot({fullPage: true, path:"beforeButtonPress.png"})
-  const metaData = {
+  let metaData = {
     url: null,
     component: 'Catalog Course',
     variant: 'default',
@@ -120,7 +120,7 @@ async function catalogCourse(domain) {
   })
   
   //await page.screenshot({fullPage: true, path: "afterButtonPress.png"})
-  const metaData = {
+   metaData = {
     url: null,
     component: 'Catalog Course',
     variant: 'Details Clicked',
