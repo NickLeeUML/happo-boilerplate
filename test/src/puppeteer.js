@@ -295,7 +295,7 @@ async function newsBlocksSlider(domain){
 function catalogCoursePromise(domain) {
   return new Promise(async (resolve, reject) => {
       
-    const imageArray = [];
+    const snapshots = [];
 
     const url = `${domain}/patterns/components-catalog-course-default.default.html`;
   
@@ -317,8 +317,9 @@ function catalogCoursePromise(domain) {
       target: 'Chrome'
     }
     let data = await page.screenshot({ fullPage: true, encoding: 'base64' })
-    await processScreenshot(metaData, data)
-  
+    let snapshot = await processScreenshot(metaData, data)
+    snapshots.push(snapshot);
+
     await page.$eval('body > form > uml-catalog-course > div > div > div.sc-hGoxap.bVyQSv > button', function(button){
       button.click()
     })
@@ -330,15 +331,22 @@ function catalogCoursePromise(domain) {
       target: 'Chrome'
     }
     data = await page.screenshot({ fullPage: true, encoding: 'base64' })
-    const result  = await processScreenshot(metaData, data)
+  
+    snapshot = await processScreenshot(metaData, data)
+    snapshots.push(snapshot);
+
+    console.log("processed: ", snapshot);
   
     await browser.close();
-    resolve(result)
+
+    const reportResult = await createReport(process.env.SHA, snapshots);  //check for error
+
+    resolve(reportResult)
 
   })
 }
 
-const pupeteerFunctionsArray = [catalogCoursePromise ];
+const pupeteerFunctionsArray = [catalogCoursePromise, newsBlocksSliderPromise ];
 
 
 function promiseAll(){
@@ -365,8 +373,8 @@ function processScripts(puppeteerScripts){
     }, Promise.resolve())
 
     result.then( async (value) => {
-        const completed = await completeReport()
-        resolve(completed);
+        // const completed = await completeReport()
+        resolve(value);
       },
       (reason) => {
         reject(reason);
