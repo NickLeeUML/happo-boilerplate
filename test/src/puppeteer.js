@@ -250,7 +250,7 @@ async function newsBlocksSlider(domain){
       target: 'Chrome'
     }
 
-    const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+    let data = await page.screenshot({ fullPage: true, encoding: 'base64' })
     const snapshot = await processScreenshot(metaData, data)
     snapshots.push(snapshot);
 
@@ -271,7 +271,7 @@ async function newsBlocksSlider(domain){
         variant: 'Button Clicked',
         target: 'Chrome'
       }
-      const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+      let data = await page.screenshot({ fullPage: true, encoding: 'base64' })
       const snapshot = await processScreenshot(metaData, data)
       snapshots.push(snapshot);
       try {
@@ -316,7 +316,7 @@ function catalogCoursePromise(domain) {
       variant: 'default',
       target: 'Chrome'
     }
-    const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+    let data = await page.screenshot({ fullPage: true, encoding: 'base64' })
     await processScreenshot(metaData, data)
   
     await page.$eval('body > form > uml-catalog-course > div > div > div.sc-hGoxap.bVyQSv > button', function(button){
@@ -329,7 +329,7 @@ function catalogCoursePromise(domain) {
       variant: 'Details Clicked',
       target: 'Chrome'
     }
-    const data = await page.screenshot({ fullPage: true, encoding: 'base64' })
+    data = await page.screenshot({ fullPage: true, encoding: 'base64' })
     const result  = await processScreenshot(metaData, data)
   
     await browser.close();
