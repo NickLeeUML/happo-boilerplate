@@ -371,7 +371,7 @@ function processScripts(puppeteerScripts){
 
 async function start() {
   //await newsBlocksSlider(process.env.URL)
-  await processScripts()
+  await processScripts(pupeteerFunctionsArray)
 }
 
 start()
