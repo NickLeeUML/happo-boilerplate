@@ -358,14 +358,12 @@ function processScripts(puppeteerScripts){
       
     }, Promise.resolve())
 
-    result.then(
-      (value) => {
+    result.then( async (value) => {
         const completed = await completeReport()
-
-          resolve(completed);
+        resolve(completed);
       },
       (reason) => {
-          reject(reason);
+        reject(reason);
       }
   );
   })
