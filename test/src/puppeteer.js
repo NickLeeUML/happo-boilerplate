@@ -338,7 +338,13 @@ function catalogCoursePromise(domain) {
   })
 }
 
-const pupeteerFunctionsArray = [newsBlocksSliderPromise ];
+const pupeteerFunctionsArray = [catalogCoursePromise ];
+
+
+function promiseAll(){
+  Promise.all([newsBlocksSliderPromise(), catalogCoursePromise()])
+}
+
 
 function returnsPromise(puppeteerFunction, domain) {
   return new Promise( async (resolve, reject) => {
