@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const { processScreenshot } = require('./processing.js');
-const { checkIfUnique, uploadImage, getBlobUrl, getHash } = require('./azure/blobService.js');
+const { uploadImage, getBlobUrl, getHash } = require('./azure/blobService.js');
 const { createReport, compare, completeReport, reportStatus } = require('./happo.js');
 
 const url = `${process.env.URL}patterns/components-link-list-featured.default.html`;
