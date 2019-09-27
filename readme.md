@@ -62,3 +62,9 @@
 
 ### Example commad  to test locally
      URL=https://997addd2.ngrok.io/Website.UI.Template.v6.happo-url SHA=1111 npm run ui-test;
+
+
+
+### Important Setup 
+ 
+#### Azure Blob
