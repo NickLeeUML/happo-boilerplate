@@ -31,6 +31,10 @@ This is the key in order to use the Happo API with Happo's built in GitHub pull 
  
 The script step named "setting git variables" initially checks out the current working branch name in order to correctly get set the sha values. This currently needs to be updated each time. 
 
+To simulate two different projects I ran puppeteer against two different urls with different styling (seen in the URL variable). 
+
+Make sure to set the change url when making a compare to the PR on GitHub. 
+
 
 ### Example command  to test locally
 URL=https://997addd2.ngrok.io/Website.UI.Template.v6.happo-url SHA=1111 npm run ui-test;
