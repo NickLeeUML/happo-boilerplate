@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:prd": "webpack --config ./scripts/webpack.config.babel.js --hide-modules true --mode \"production\"",
-    "build:dev": "webpack --config ./scripts/webpack.config.babel.js --hide-modules true --mode \"development\"",
-    "watch": "yarn run build:dev --watch",
-    "clean": "rimraf ./build",
     "happo": "happo",
-    "happo-ci-travis": "",
     "happo-ci": "happo-ci",
     "build-ui-test": "webpack --config ./test/ui-webpack.config.babel.js",
     "ui-test": "node test/src/puppeteer.js",
