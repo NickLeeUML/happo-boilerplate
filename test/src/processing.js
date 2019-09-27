@@ -1,6 +1,5 @@
 const sizeOf = require('image-size');
 const {
-    checkIfUnique,
     uploadImage,
     getBlobUrl,
     convertToHash,

@@ -1,6 +1,5 @@
 const request = require('request-promise');
 const {
-    checkIfUnique,
     uploadImage,
     getBlobUrl,
     convertToHash,

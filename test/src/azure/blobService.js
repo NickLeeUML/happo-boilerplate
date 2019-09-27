@@ -37,11 +37,6 @@ function convertToHash(buffer){
     return md5(buffer);
 }
 
-async function checkIfUnique(name) {
-    const url = await blobService.getUrl('screenshots', 'nicklee');
-    return url;
-}
-
 function listSegment(name) {
     return new Promise((resolve, reject) => {
         blobService.listBlobsSegmentedWithPrefix('screenshots', name, null, function (error, result) {
@@ -60,7 +55,6 @@ function listSegment(name) {
 }
 
 module.exports = {
-    checkIfUnique:checkIfUnique,
     uploadImage:uploadImage,
     getBlobUrl:getBlobUrl,
     convertToHash:convertToHash,
