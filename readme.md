@@ -1,6 +1,6 @@
 # Documentation for Azure, Happo.io, Puppeteer UI testing 
 
-## /azure/blobService.js
+## blobService.js
 
 ## happo.js
     This file provides functions for interacting with the Happo API.

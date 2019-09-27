@@ -8,9 +8,9 @@ const {
 } = require('./azure/blobService.js');
 const { createReport, compare } = require('./happo.js');
 
-const processScreenshot = async function (imageData, rawdata) {
+const processScreenshot = async function (imageData, rawData) {
 
-    const buff = new Buffer(rawdata, 'base64');
+    const buff = new Buffer(rawData, 'base64');
     const size = sizeOf(buff);
     const hash = convertToHash(buff);  //md5 converter
 
@@ -33,5 +33,5 @@ const processScreenshot = async function (imageData, rawdata) {
 }
 
 module.exports = {
-    processScreenshot
+    processScreenshot: processScreenshot
 }

@@ -116,7 +116,6 @@ async function newsBlocksSlider(domain){
 
 }
 
-
 function newsBlocksSliderPromise(domain) {
   return new Promise(async (resolve, reject) => {
     const snapshots = [];
