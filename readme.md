@@ -14,8 +14,11 @@
 
     ### Left Todo: 
         1. How to do an Initial run when updating scrips?
-        2. Error Handeling 
-        3. What todo when comparsion fails
+        2. Addmore Error Handeling 
+        3. What else todo when comparsion fails
+        4. Add support for custom project name (must be consistant across api calls)
+        5. How to take multiple screenshot
+
 
 
 ## puppeteer.js

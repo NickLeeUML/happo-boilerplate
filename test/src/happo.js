@@ -1,26 +1,23 @@
-
 const request = require('request-promise');
 const {
     checkIfUnique,
     uploadImage,
     getBlobUrl,
     convertToHash,
-    listSegment } = require('./azure/blobService.js');
+    listSegment 
+} = require('./azure/blobService.js');
 
 //require('dotenv').config()
 require('dotenv').config({ path: __dirname + '/.env' });
 const HAPPO_API_KEY = process.env.HAPPO_API_KEY;
 const HAPPO_API_SECRET = process.env.HAPPO_API_SECRET;
 
-const blobService = require('./azure/blobService.js')
-
+const blobService = require('./azure/blobService.js');
 
 const token = new Buffer(`${HAPPO_API_KEY}:${HAPPO_API_SECRET}`).toString('base64');
 
 const reportStatus = async function (reportId) {
     return new Promise((resolve, reject) => {
-      
-
         const options = {
             url: `https://happo.io/api/reports/${reportId}/status?project=Puppeteer-Azure-Integration-partials`,
             headers: {
@@ -36,20 +33,16 @@ const reportStatus = async function (reportId) {
             console.log("report status error: ", error);
             reject(error);
         })
-
     })
-
 }
 
 const createReport = async function (sha, snapshots) {
-    
     const body = {
         snaps: snapshots,
         project: 'Puppeteer-Azure-Integration-partials',
         message: '', // pull request title
         partial: true,
     };
-
 
     return new Promise((resolve, reject) => {
         const options = {
