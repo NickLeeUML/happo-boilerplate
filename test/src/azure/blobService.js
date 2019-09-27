@@ -11,11 +11,6 @@ const AZURE_STORAGE_ACCOUNT = process.env.AZURE_STORAGE_ACCOUNT;
 const AZURE_STORAGE_ACCESS_KEY = process.env.AZURE_STORAGE_ACCESS_KEY;
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 
-const ONE_MEGABYTE = 1024 * 1024;
-const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
-
-const ONE_MINUTE = 60 * 1000;
-
 const blobService = azure.createBlobService(AZURE_STORAGE_ACCOUNT, AZURE_STORAGE_ACCESS_KEY);
 
 async function uploadImage(blobName, data) {

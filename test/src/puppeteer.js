@@ -11,6 +11,34 @@ function wait(func, time) {
     }) 
 } 
 
+function returnsPromise(puppeteerFunction, domain) {
+  return new Promise(async (resolve, reject) => {
+    let value = await puppeteerFunction(domain).catch((error) => {
+      reject(error)
+    })
+    resolve(value);
+  })
+}
+
+function processScripts(puppeteerScripts) {
+  return new Promise((resolve, reject) => {
+    let result = puppeteerScripts.reduce(async (accum, func) => {
+      await accum;
+      return returnsPromise(func, process.env.URL)
+
+    }, Promise.resolve())
+
+    result.then(async (value) => {
+      // const completed = await completeReport()
+      resolve(value);
+    },
+      (reason) => {
+        reject(reason);
+      }
+    );
+  })
+}
+
 async function catalogCourse(domain) {
   const imageArray = [];
 
@@ -228,7 +256,6 @@ function catalogCoursePromise(domain) {
   })
 }
 
-
 function promiseAll() {
   const pupeteerFunctionsArray = [catalogCoursePromise, newsBlocksSliderPromise];
   Promise.all([newsBlocksSliderPromise(process.env.URL), catalogCoursePromise(process.env.URL)]).then( async () => { 
@@ -237,36 +264,7 @@ function promiseAll() {
   })
 }
 
-function returnsPromise(puppeteerFunction, domain) {
-  return new Promise(async (resolve, reject) => {
-    let value = await puppeteerFunction(domain).catch((error) => {
-      reject(error)
-    })
-    resolve(value);
-  })
-}
-
-function processScripts(puppeteerScripts) {
-  return new Promise((resolve, reject) => {
-    let result = puppeteerScripts.reduce(async (accum, func) => {
-      await accum;
-      return returnsPromise(func, process.env.URL)
-
-    }, Promise.resolve())
-
-    result.then(async (value) => {
-      // const completed = await completeReport()
-      resolve(value);
-    },
-      (reason) => {
-        reject(reason);
-      }
-    );
-  })
-}
-
 async function start() {
-  //await processScripts(pupeteerFunctionsArray)
   promiseAll()
 }
 
