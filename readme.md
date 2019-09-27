@@ -24,7 +24,10 @@ When using CrossBrowserTesting as the browser for testing only 1 or 2 simultaneo
     
 
 ## azure-pipelines.yml
-    This file provides steps used by Azure ci/cd to immitate the steps take in Happo's `happo-ci` script.  This is the key in order to use the Happo API with Happo's built in GitHub pull request intergration. [Link to steps](https://github.com/happo/happo.io#integrating-with-your-continuous-integration-ci-environment) Notice the script steps reflect the steps in Happo's documentation. Step 4 is omitted from the yml; it's runs automatically.       
+
+    This file provides steps used by Azure ci/cd to immitate the steps take in Happo's `happo-ci` script. When a pull request is made from the watched project this file runs.
+    
+    This is the key in order to use the Happo API with Happo's built in GitHub pull request intergration. [Link to steps](https://github.com/happo/happo.io#integrating-with-your-continuous-integration-ci-environment) Notice the script steps reflect the steps in Happo's documentation. Step 4 is omitted from the yml; it's runs automatically.       
 
  
 The script step named "setting git variables" initially checks out the current working branch name in order to correctly get set the sha values. This currently needs to be updated each time. 
