@@ -60,7 +60,7 @@
     "express": "^4.17.1",
     "happo.io": "^3.19.0",
     "image-size": "^0.8.1",
-    "lodash-es": "^4.17.8",
+    "lodash-es": "^4.17.21",
     "md5": "^2.2.1",
     "puppeteer": "^1.19.0",
     "request-promise": "^4.2.4"
