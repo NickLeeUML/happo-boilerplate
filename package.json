@@ -57,7 +57,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "azure-storage": "^2.10.3",
     "dotenv": "^8.1.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "happo.io": "^3.19.0",
     "image-size": "^0.8.1",
     "lodash-es": "^4.17.8",
